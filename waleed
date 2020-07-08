@@ -1,0 +1,24 @@
+import cv2
+import numpy as wee
+faces_d=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+cam=cv2.VideoCapture(0)
+cam.set(3,640)
+cam.set(4,480)
+cam.set(10,100)
+scale=1.3
+while True:
+
+    success,img=cam.read()
+    faces=faces_d.detectMultiScale(img,scale,5)
+    for(x,y,w,h) in faces:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+    cv2.imshow("viedo",img)
+    if cv2.waitKey(1)&0xFF==ord('q'):
+        break;
+
+
+
+
+
+
